@@ -1,15 +1,32 @@
 // IMPORTANDO A MODEL
-// const User = require("../models/User")
+const Spot = require("../models/Spot")
+const User = require("../models/User")
 
-// METODOS UTILIZAVEIS - INDEX, SHOW, STORE, UPDATE, DESTROY 
 // EXPORTANDO OS DADOS
 module.exports = {
-    // CRIANDO UMA SESSAO E INFORMANDO QUE ELA É ACINCRONA
+    // CRIANDO UMA SESSAO E INFORMANDO QUE ELA É ASSINCRONA
     async store(req, res){
         // PEGANDO O VALOR DA REQUISIÇÃO
-        console.log(req.body);
-        console.log(req.file);
+        const { filename } = req.file;
+        const { company, techs, price } = req.body;
+        const { user_id } = req.headers; 
+
+        // PROCURANDO SE EXISTE O USUARIO
+        const user = await User.findById(user_id);
+
+        // VERIFICANDO SE O USUARIO EXISTE
+        if (!user) {
+            return res.status(400).json({ error: "Usuário não existente!" });
+        }
+
+        // INSERINDO NO BANCO DE DADOS
+        const spot = await Spot.create({
+            user: user_id,
+            thumbnail: filename,
+            company,
+            techs: techs.split(',').map(tech => tech.trim()),
+        })
         
-        return  res.json( {ok : true});
+        return  res.json(spot);
     }
 };
