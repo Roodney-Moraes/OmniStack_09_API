@@ -4,6 +4,17 @@ const User = require("../models/User")
 
 // EXPORTANDO OS DADOS
 module.exports = {
+    // LISTANDO OS DADOS
+    async index(req, res){
+        // RECUPERANDO O VALOR DA REQUISIÇÃO
+        const { tech } = req.query;
+
+        // CRIANDO UM FILTRO
+        const spots = await Spot.find({ techs: tech });
+
+        return res.json(spots);
+    },
+
     // CRIANDO UMA SESSAO E INFORMANDO QUE ELA É ASSINCRONA
     async store(req, res){
         // PEGANDO O VALOR DA REQUISIÇÃO

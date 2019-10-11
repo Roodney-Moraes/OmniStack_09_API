@@ -1,4 +1,4 @@
-// IMPORTANDO UMA DEPENDENCIA EXTERNA
+    // IMPORTANDO UMA DEPENDENCIA EXTERNA
 const express = require("express");
 const multer = require("multer");
 const uploadConfig = require("./config/upload");
@@ -6,6 +6,8 @@ const uploadConfig = require("./config/upload");
 // IMPORTANDO O CONTROLLER
 const SessionController = require("./controllers/SessionController")
 const SpotController = require("./controllers/SpotController")
+const DashboardController = require("./controllers/DashboardController")
+const BookingController = require("./controllers/BookingController")
 
 // CHAMANDO A FUNÇÃO ROUTES
 const routes = express.Router();
@@ -21,6 +23,9 @@ const upload = multer(uploadConfig);
 // METODO POST BODY
 routes.post('/sessions', SessionController.store);
 routes.post('/spots', upload.single('thumbnail'), SpotController.store);
+routes.get('/spots', SpotController.index);
+routes.get('/dashboard', DashboardController.show);
+routes.post('/spots/:spot_id/booking', BookingController.store);
 
 
 // EXPORTANDO AS ROTAS
