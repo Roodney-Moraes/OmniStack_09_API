@@ -12,9 +12,8 @@ mongoose.connect("mongodb+srv://omnistack:omnistack@omnistack-zbwbf.mongodb.net/
     useUnifiedTopology: true
 });
 
-// USAR PLUGIN DO JSON DO EXPRESS
+// USAR PLUGIN PARA USAR FORMATO JSON DO EXPRESS
 app.use(express.json());
-
 // CHAMANDO AS ROTAS
 app.use(routes); 
 

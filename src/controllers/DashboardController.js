@@ -1,6 +1,5 @@
 // IMPORTANDO A MODEL
-const Spot = require("../models/Spot")
-//const User = require("../models/User")
+const Spot = require("../models/Spot");
 
 // EXPORTANDO OS DADOS
 module.exports = {

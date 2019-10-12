@@ -36,8 +36,13 @@ module.exports = {
             thumbnail: filename,
             company,
             techs: techs.split(',').map(tech => tech.trim()),
+            price
         })
         
+        // VERIFICANDO OS DADOS NO CONSOLE
+        console.log(req.body);
+        console.log(req.file);
+
         return  res.json(spot);
     }
 };

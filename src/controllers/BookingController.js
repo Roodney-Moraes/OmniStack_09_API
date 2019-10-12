@@ -1,6 +1,5 @@
 // IMPORTANDO A MODEL
-const Booking = require("../models/Booking")
-
+const Booking = require("../models/Booking");
 
 // EXPORTANDO OS DADOS
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
         const booking = await Booking.create({
              user: user_id,
              spot: spot_id,
-             date: date
+             date,
         });
 
         // POPULANDO OS DADOS
