@@ -1,6 +1,7 @@
 // IMPORTANDO UMA DEPENDENCIA 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const routes = require("./routes");
 
 // CRIANDO UMA APLICAÇÃO
@@ -12,6 +13,8 @@ mongoose.connect("mongodb+srv://omnistack:omnistack@omnistack-zbwbf.mongodb.net/
     useUnifiedTopology: true
 });
 
+// USAR PLUGIN PARA USAR FORMATO JSON DO EXPRESS
+app.use(cors());
 // USAR PLUGIN PARA USAR FORMATO JSON DO EXPRESS
 app.use(express.json());
 // CHAMANDO AS ROTAS
